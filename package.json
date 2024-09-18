@@ -1,17 +1,19 @@
 {
-  "name": "cmrit-leaderboards",
+  "name": "pyramid-ranker",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.108",
     "@types/react": "^18.3.7",
     "@types/react-dom": "^18.3.0",
+    "ag-grid-community": "^32.2.0",
+    "ag-grid-react": "^32.2.0",
+    "axios": "^1.7.7",
+    "exceljs": "^4.4.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
@@ -39,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-config-react-app": "^7.0.1"
   }
 }
