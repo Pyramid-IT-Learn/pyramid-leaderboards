@@ -16,8 +16,8 @@ const Header: React.FC = () => {
           </h1>
         </Link>
         <nav className="hidden sm:flex items-center space-x-6">
-          <Link to="/" className="text-dark-50 hover:text-primary-400 transition-colors duration-300">Home</Link>
-          <Link to="/leaderboard" className="text-dark-50 hover:text-primary-400 transition-colors duration-300">Leaderboard</Link>
+          <Link to="/pyramid-leaderboards" className="text-dark-50 hover:text-primary-400 transition-colors duration-300">Home</Link>
+          <Link to="/pyramid-leaderboards/leaderboard" className="text-dark-50 hover:text-primary-400 transition-colors duration-300">Leaderboard</Link>
         </nav>
         <button
           className="sm:hidden text-dark-50 hover:text-primary-400 transition-colors duration-300"

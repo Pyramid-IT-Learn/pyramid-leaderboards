@@ -19,8 +19,8 @@ const App: React.FC = () => {
             <div className="container mx-auto max-w-4xl bg-dark-900 bg-opacity-80 rounded-lg shadow-lg backdrop-filter backdrop-blur-lg">
               <Routes>
                 <Route path="/pyramid-leaderboards" element={<Home />} />
-                <Route path="/leaderboard/:database/:collection" element={<Leaderboard />} />
-                <Route path="/leaderboard" element={<Leaderboard />} />
+                <Route path="/pyramid-leaderboards/leaderboard/:database/:collection" element={<Leaderboard />} />
+                <Route path="/pyramid-leaderboards/leaderboard" element={<Leaderboard />} />
               </Routes>
             </div>
           </main>

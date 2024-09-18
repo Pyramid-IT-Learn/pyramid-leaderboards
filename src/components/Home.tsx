@@ -40,7 +40,7 @@ const Home: React.FC = () => {
 
   const handleViewLeaderboard = () => {
     if (selectedDatabase && selectedCollection) {
-      navigate(`/leaderboard/${selectedDatabase}/${selectedCollection}`);
+      navigate(`/pyramid-leaderboards/leaderboard/${selectedDatabase}/${selectedCollection}`);
     }
   };
 
