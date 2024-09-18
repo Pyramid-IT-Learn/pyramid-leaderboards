@@ -9,7 +9,7 @@ const Header: React.FC = () => {
   return (
     <header className="bg-dark-900 bg-opacity-90 p-4 fixed w-full top-0 left-0 shadow-lg z-50 backdrop-filter backdrop-blur-lg">
       <div className="container mx-auto flex items-center justify-between">
-        <Link to="/" className="flex items-center group">
+        <Link to="/pyramid-leaderboards" className="flex items-center group">
           <img src={logo} alt="Logo" className="h-8 w-auto mr-2 sm:h-10 sm:mr-4" />
           <h1 className="text-xl sm:text-2xl font-bold text-primary-600 group-hover:text-primary-500 transition-colors duration-300 text-shadow-glow shadow-primary-600">
             Pyramid Ranker
