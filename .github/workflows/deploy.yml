@@ -17,13 +17,18 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '*'
+          node-version: '16'  # Specify your required Node.js version
 
       - name: Install dependencies
         run: npm install
 
       - name: Build the app
         run: npm run build
+
+      - name: Configure Git
+        run: |
+          git config --global user.email "rushyendra.7004@gmail.com"  # Replace with your email
+          git config --global user.name "dog-broad"          # Replace with your name
 
       - name: Deploy to GitHub Pages
         run: npm run deploy
