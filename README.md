@@ -1,46 +1,73 @@
-# Getting Started with Create React App
+# Pyramid Ranker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div style="display: flex; align-items: center; justify-content: center;">
+  <img src="src/logo.svg" width="50" style="margin-right: 10px;" />
+  <span style="text-align: center; font-size: 2rem;">Pyramid Ranker</span>
+</div>
 
-## Available Scripts
+<br>
+Welcome to **Pyramid Ranker**! 🎉 This web application helps users manage and view leaderboards for various coding competitions and academic assessments. Built with a focus on performance and user experience, Pyramid Ranker allows you to easily select your college and batch, view rankings, and export leaderboard data for further analysis. 📊✨
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Dynamic Leaderboards**: Fetch and display leaderboards based on selected colleges and batches. 🏆
+- **Data Export**: Export leaderboard data to Excel for offline analysis. 📥
+- **Responsive Design**: User-friendly interface that works seamlessly on both desktop and mobile devices. 📱💻
+- **Custom Dropdowns**: Intuitive dropdowns for selecting databases and collections. 📋
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Technologies Used
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **React**: For building the user interface. ⚛️
+- **React Router**: For navigation between different views. 🚦
+- **Ag-Grid**: For displaying leaderboard data in a grid format. 📊
+- **Axios**: For making API requests. 📡
+- **ExcelJS**: For exporting leaderboard data to Excel. 📑
+- **Tailwind CSS**: For styling and responsive design. 🎨
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To get a local copy of the project up and running, follow these steps:
 
-### `npm run build`
+### Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js and npm installed on your machine. 🛠️
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/pyramid-ranker.git
+   cd pyramid-ranker
+   ```
 
-### `npm run eject`
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3. Set up your backend server (replace `http://localhost:5000` in `utils/api.ts` with your actual backend URL if different). 🌐
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Start the development server:
+   ```bash
+   npm start
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+5. Open your browser and navigate to `http://localhost:3000`. 🚀
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Usage
 
-## Learn More
+1. **Select College**: Choose your college from the dropdown. 🎓
+2. **Select Batch**: Pick your batch to view the corresponding leaderboard. 📚
+3. **View Leaderboard**: Click on the "View Leaderboard" button to see the rankings. 📈
+4. **Export Data**: Use the "Export to Excel" button to download the leaderboard data. 💾
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contributing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+We welcome contributions! If you have suggestions or improvements, feel free to create an issue or submit a pull request. 🤝💡
+
+## Author
+
+- **Gabyah92** - [Instagram](https://www.instagram.com/gabyah92) 🌟
+- **Rushyendra** - [GitHub](https://github.com/dog-broad) 🦸‍♂️
+
+Thank you for checking out Pyramid Ranker! We hope you find it useful for managing your competitive programming and academic leaderboards. If you have any questions, feel free to reach out! 😊💬
