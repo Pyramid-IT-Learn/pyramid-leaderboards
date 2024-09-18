@@ -1,6 +1,6 @@
 // App.tsx
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Leaderboard from './components/Leaderboard';
 import Home from './components/Home';
@@ -18,9 +18,9 @@ const App: React.FC = () => {
           <main className="pt-20 pb-8 px-4 sm:px-6 lg:px-8">
             <div className="container mx-auto max-w-4xl bg-dark-900 bg-opacity-80 rounded-lg shadow-lg backdrop-filter backdrop-blur-lg">
               <Routes>
-                <Route path="/pyramid-leaderboards" element={<Home />} />
-                <Route path="/pyramid-leaderboards/leaderboard/:database/:collection" element={<Leaderboard />} />
-                <Route path="/pyramid-leaderboards/leaderboard" element={<Leaderboard />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/leaderboard/:database/:collection" element={<Leaderboard />} />
+                <Route path="/leaderboard" element={<Leaderboard />} />
               </Routes>
             </div>
           </main>

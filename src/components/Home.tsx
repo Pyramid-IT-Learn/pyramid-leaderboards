@@ -1,4 +1,3 @@
-// Home.tsx
 import React, { useState, useEffect } from 'react';
 import CustomDropdown from './CustomDropdown';
 import { fetchDatabases, fetchCollections } from '../utils/api';
@@ -40,7 +39,7 @@ const Home: React.FC = () => {
 
   const handleViewLeaderboard = () => {
     if (selectedDatabase && selectedCollection) {
-      navigate(`/pyramid-leaderboards/leaderboard/${selectedDatabase}/${selectedCollection}`);
+      navigate(`/leaderboard/${selectedDatabase}/${selectedCollection}`);
     }
   };
 
@@ -69,21 +68,14 @@ const Home: React.FC = () => {
         )}
         <button
           onClick={handleViewLeaderboard}
-          className="bg-primary-600 text-dark-50 font-bold py-3 px-6 rounded-full hover:bg-primary-500 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+          className={`bg-primary-600 text-dark-50 font-bold py-3 px-6 rounded-full hover:bg-primary-500 transition-all duration-300 transform hover:scale-105 ${!selectedDatabase || !selectedCollection ? 'opacity-50 cursor-not-allowed' : ''}`}
           disabled={!selectedDatabase || !selectedCollection}
         >
           View Leaderboard
         </button>
       </div>
       <p className="text-sm text-dark-200 mt-12">
-        App By:{' '}
-        <a href="https://www.instagram.com/gabyah92" className="text-primary-400 hover:underline">
-          gabyah92
-        </a>{' '}
-        &{' '}
-        <a href="https://github.com/dog-broad" className="text-primary-400 hover:underline">
-          Rushyendra
-        </a>
+        App By: <a href="https://www.instagram.com/gabyah92" className="text-primary-400 hover:underline">gabyah92</a> & <a href="https://github.com/dog-broad" className="text-primary-400 hover:underline">Rushyendra</a>
       </p>
     </div>
   );

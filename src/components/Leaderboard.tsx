@@ -3,9 +3,9 @@ import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import { useParams } from 'react-router-dom';
-import { fetchBatchData, fetchBatchUpdateTime } from '../utils/api'; // Assuming you have this API function
+import { fetchBatchData, fetchBatchUpdateTime } from '../utils/api';
 import ExcelJS from 'exceljs';
-import { ColDef, ColGroupDef } from 'ag-grid-community';
+import { ColDef } from 'ag-grid-community';
 
 interface RowData {
   Rank: number;
@@ -29,29 +29,26 @@ const Leaderboard: React.FC = () => {
   const [lastUpdated, setLastUpdated] = useState<string | null>(null);
   const { database, collection } = useParams<{ database: string; collection: string }>();
 
-  const numberSort = (num1: number, num2: number) => num1 - num2;
-  const floatSort = (num1: number, num2: number) => parseFloat(num1.toString()) - parseFloat(num2.toString());
-
-  const columnDefs = [
-    { headerName: 'Rank', field: 'Rank', sortable: true, width: 100, comparator: numberSort, pinned: 'left', filter: 'agNumberColumnFilter'},
-    { headerName: 'Handle', field: 'Handle', sortable: true, width: 150, pinned: 'left', filter: 'agTextColumnFilter', floatingFilter: true},
-    { headerName: 'Codeforces Handle', field: 'Codeforces_Handle', sortable: true, filter: 'agTextColumnFilter', floatingFilter: true},
-    { headerName: 'Codeforces Rating', field: 'Codeforces_Rating', sortable: true, comparator: numberSort, filter: 'agNumberColumnFilter'},
-    { headerName: 'GFG Handle', field: 'GFG_Handle', sortable: true, filter: 'agTextColumnFilter', floatingFilter: true},
-    { headerName: 'GFG Contest Score', field: 'GFG_Contest_Score', sortable: true, comparator: numberSort, filter: 'agNumberColumnFilter'},
-    { headerName: 'GFG Practice Score', field: 'GFG_Practice_Score', sortable: true, comparator: numberSort, filter: 'agNumberColumnFilter'},
-    { headerName: 'Leetcode Handle', field: 'Leetcode_Handle', sortable: true, filter: 'agTextColumnFilter', floatingFilter: true},
-    { headerName: 'Leetcode Rating', field: 'Leetcode_Rating', sortable: true, comparator: numberSort, filter: 'agNumberColumnFilter'},
-    { headerName: 'Codechef Handle', field: 'Codechef_Handle', sortable: true, filter: 'agTextColumnFilter', floatingFilter: true},
-    { headerName: 'Codechef Rating', field: 'Codechef_Rating', sortable: true, comparator: numberSort, filter: 'agNumberColumnFilter'},
-    { headerName: 'HackerRank Handle', field: 'HackerRank_Handle', sortable: true, filter: 'agTextColumnFilter', floatingFilter: true},
-    { headerName: 'HackerRank Practice Score', field: 'HackerRank_Practice_Score', sortable: true, comparator: numberSort, filter: 'agNumberColumnFilter', width: 260},
-    { headerName: 'Percentile', field: 'Percentile', sortable: true, comparator: floatSort, filter: 'agNumberColumnFilter' }
-  ] as (ColDef<RowData, any> | ColGroupDef<RowData>)[];
+  const columnDefs: ColDef<RowData>[] = [
+    { headerName: 'Rank', field: 'Rank', sortable: true, width: 100, pinned: 'left', filter: 'agNumberColumnFilter' },
+    { headerName: 'Handle', field: 'Handle', sortable: true, width: 150, pinned: 'left', filter: 'agTextColumnFilter', floatingFilter: true },
+    { headerName: 'Codeforces Handle', field: 'Codeforces_Handle', sortable: true, filter: 'agTextColumnFilter', floatingFilter: true },
+    { headerName: 'Codeforces Rating', field: 'Codeforces_Rating', sortable: true, filter: 'agNumberColumnFilter' },
+    { headerName: 'GFG Handle', field: 'GFG_Handle', sortable: true, filter: 'agTextColumnFilter', floatingFilter: true },
+    { headerName: 'GFG Contest Score', field: 'GFG_Contest_Score', sortable: true, filter: 'agNumberColumnFilter' },
+    { headerName: 'GFG Practice Score', field: 'GFG_Practice_Score', sortable: true, filter: 'agNumberColumnFilter' },
+    { headerName: 'Leetcode Handle', field: 'Leetcode_Handle', sortable: true, filter: 'agTextColumnFilter', floatingFilter: true },
+    { headerName: 'Leetcode Rating', field: 'Leetcode_Rating', sortable: true, filter: 'agNumberColumnFilter' },
+    { headerName: 'Codechef Handle', field: 'Codechef_Handle', sortable: true, filter: 'agTextColumnFilter', floatingFilter: true },
+    { headerName: 'Codechef Rating', field: 'Codechef_Rating', sortable: true, filter: 'agNumberColumnFilter' },
+    { headerName: 'HackerRank Handle', field: 'HackerRank_Handle', sortable: true, filter: 'agTextColumnFilter', floatingFilter: true },
+    { headerName: 'HackerRank Practice Score', field: 'HackerRank_Practice_Score', sortable: true, filter: 'agNumberColumnFilter' },
+    { headerName: 'Percentile', field: 'Percentile', sortable: true, filter: 'agNumberColumnFilter' }
+  ];
 
   useEffect(() => {
-    if (database && collection) {
-      const fetchData = async () => {
+    const fetchData = async () => {
+      if (database && collection) {
         try {
           const response = await fetchBatchData(database, collection);
           const data = response.data.map((row: any, index: number) => ({
@@ -69,20 +66,19 @@ const Leaderboard: React.FC = () => {
             HackerRank_Handle: row.hackerrankUsername,
             HackerRank_Practice_Score: row.hackerrankRating,
             Percentile: row.Percentile,
-            TotalRating: row.TotalRating,
           }));
           setRowData(data);
-          
+
           // Fetch last updated time
           const updateResponse = await fetchBatchUpdateTime(database, collection);
           setLastUpdated(updateResponse.data.lastUpdateTime || null);
         } catch (error) {
           console.error('Error fetching data:', error);
         }
-      };
+      }
+    };
 
-      fetchData();
-    }
+    fetchData();
   }, [database, collection]);
 
   const onExportClick = useCallback(async () => {
@@ -128,9 +124,7 @@ const Leaderboard: React.FC = () => {
       <div className="container mx-auto p-4 bg-opacity-10 bg-white backdrop-filter backdrop-blur-lg rounded-lg shadow-lg">
         <div id="lastUpdated" className="text-center mb-4">
           <h2 className="text-lg font-semibold mb-2">
-            Last Updated: <span className="text-blue-400">
-              {lastUpdated ? new Date(lastUpdated).toLocaleString() : 'N/A'}
-            </span>
+            Last Updated: <span className="text-blue-400">{lastUpdated ? new Date(lastUpdated).toLocaleString() : 'N/A'}</span>
           </h2>
         </div>
         {database && collection ? (
