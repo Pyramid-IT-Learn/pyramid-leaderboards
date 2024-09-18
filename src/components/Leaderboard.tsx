@@ -22,6 +22,11 @@ interface RowData {
   HackerRank_Handle: string;
   HackerRank_Practice_Score: number;
   Percentile: number;
+  Codeforces_Status: boolean;
+  GFG_Status: boolean;
+  Leetcode_Status: boolean;
+  Codechef_Status: boolean;
+  HackerRank_Status: boolean;
 }
 
 const Leaderboard: React.FC = () => {
@@ -29,22 +34,32 @@ const Leaderboard: React.FC = () => {
   const [lastUpdated, setLastUpdated] = useState<string | null>(null);
   const { database, collection } = useParams<{ database: string; collection: string }>();
 
+  const getColor = (data?: RowData, field?: keyof Omit<RowData, 'Rank' | 'Handle'>) => {
+    if (data && field) {
+      const statusField = `${field.replaceAll('_Handle', '').replaceAll('_Rating', '').replaceAll('_Practice_Score', '').replaceAll('_Contest_Score', '')}_Status` as keyof RowData; // Cast to keyof RowData
+      if (data[statusField]) {
+        return { color: 'white' };
+      }
+    }
+    return { color: 'red' };
+  };
+
   const columnDefs: ColDef<RowData>[] = [
     { headerName: 'Rank', field: 'Rank', sortable: true, width: 100, pinned: 'left', filter: 'agNumberColumnFilter' },
     { headerName: 'Handle', field: 'Handle', sortable: true, width: 150, pinned: 'left', filter: 'agTextColumnFilter', floatingFilter: true },
-    { headerName: 'Codeforces Handle', field: 'Codeforces_Handle', sortable: true, filter: 'agTextColumnFilter', floatingFilter: true },
-    { headerName: 'Codeforces Rating', field: 'Codeforces_Rating', sortable: true, filter: 'agNumberColumnFilter' },
-    { headerName: 'GFG Handle', field: 'GFG_Handle', sortable: true, filter: 'agTextColumnFilter', floatingFilter: true },
-    { headerName: 'GFG Contest Score', field: 'GFG_Contest_Score', sortable: true, filter: 'agNumberColumnFilter' },
-    { headerName: 'GFG Practice Score', field: 'GFG_Practice_Score', sortable: true, filter: 'agNumberColumnFilter' },
-    { headerName: 'Leetcode Handle', field: 'Leetcode_Handle', sortable: true, filter: 'agTextColumnFilter', floatingFilter: true },
-    { headerName: 'Leetcode Rating', field: 'Leetcode_Rating', sortable: true, filter: 'agNumberColumnFilter' },
-    { headerName: 'Codechef Handle', field: 'Codechef_Handle', sortable: true, filter: 'agTextColumnFilter', floatingFilter: true },
-    { headerName: 'Codechef Rating', field: 'Codechef_Rating', sortable: true, filter: 'agNumberColumnFilter' },
-    { headerName: 'HackerRank Handle', field: 'HackerRank_Handle', sortable: true, filter: 'agTextColumnFilter', floatingFilter: true },
-    { headerName: 'HackerRank Practice Score', field: 'HackerRank_Practice_Score', sortable: true, filter: 'agNumberColumnFilter' },
+    { headerName: 'Codeforces Handle', field: 'Codeforces_Handle', sortable: true, filter: 'agTextColumnFilter', floatingFilter: true, cellStyle: (params) => getColor(params.data, 'Codeforces_Handle') },
+    { headerName: 'Codeforces Rating', field: 'Codeforces_Rating', sortable: true, filter: 'agNumberColumnFilter', cellStyle: (params) => getColor(params.data, 'Codeforces_Rating') },
+    { headerName: 'GFG Handle', field: 'GFG_Handle', sortable: true, filter: 'agTextColumnFilter', floatingFilter: true, cellStyle: (params) => getColor(params.data, 'GFG_Handle') },
+    { headerName: 'GFG Contest Score', field: 'GFG_Contest_Score', sortable: true, filter: 'agNumberColumnFilter', cellStyle: (params) => getColor(params.data, 'GFG_Contest_Score') },
+    { headerName: 'GFG Practice Score', field: 'GFG_Practice_Score', sortable: true, filter: 'agNumberColumnFilter', cellStyle: (params) => getColor(params.data, 'GFG_Practice_Score') },
+    { headerName: 'Leetcode Handle', field: 'Leetcode_Handle', sortable: true, filter: 'agTextColumnFilter', floatingFilter: true, cellStyle: (params) => getColor(params.data, 'Leetcode_Handle') },
+    { headerName: 'Leetcode Rating', field: 'Leetcode_Rating', sortable: true, filter: 'agNumberColumnFilter', cellStyle: (params) => getColor(params.data, 'Leetcode_Rating') },
+    { headerName: 'Codechef Handle', field: 'Codechef_Handle', sortable: true, filter: 'agTextColumnFilter', floatingFilter: true, cellStyle: (params) => getColor(params.data, 'Codechef_Handle') },
+    { headerName: 'Codechef Rating', field: 'Codechef_Rating', sortable: true, filter: 'agNumberColumnFilter', cellStyle: (params) => getColor(params.data, 'Codechef_Rating') },
+    { headerName: 'HackerRank Handle', field: 'HackerRank_Handle', sortable: true, filter: 'agTextColumnFilter', floatingFilter: true, cellStyle: (params) => getColor(params.data, 'HackerRank_Handle') },
+    { headerName: 'HackerRank Practice Score', field: 'HackerRank_Practice_Score', sortable: true, filter: 'agNumberColumnFilter', cellStyle: (params) => getColor(params.data, 'HackerRank_Practice_Score') },
     { headerName: 'Percentile', field: 'Percentile', sortable: true, filter: 'agNumberColumnFilter' }
-  ];
+  ];  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -66,6 +81,11 @@ const Leaderboard: React.FC = () => {
             HackerRank_Handle: row.hackerrankUsername,
             HackerRank_Practice_Score: row.hackerrankRating,
             Percentile: row.Percentile,
+            Codeforces_Status: row.codeforcesStatus,
+            GFG_Status: row.geeksforgeeksStatus,
+            Leetcode_Status: row.leetcodeStatus,
+            Codechef_Status: row.codechefStatus,
+            HackerRank_Status: row.hackerrankStatus
           }));
           setRowData(data);
 
