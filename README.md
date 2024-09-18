@@ -69,3 +69,4 @@ We welcome contributions! If you have suggestions or improvements, feel free to 
 - **Rushyendra** - [GitHub](https://github.com/dog-broad) 🦸‍♂️
 
 Thank you for checking out Pyramid Ranker! We hope you find it useful for managing your competitive programming and academic leaderboards. If you have any questions, feel free to reach out! 😊💬
+
