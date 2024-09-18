@@ -80,7 +80,7 @@ const Leaderboard: React.FC = () => {
             Codechef_Rating: row.codechefRating,
             HackerRank_Handle: row.hackerrankUsername,
             HackerRank_Practice_Score: row.hackerrankRating,
-            Percentile: row.Percentile,
+            Percentile: Number(row.Percentile).toFixed(2),
             Codeforces_Status: row.codeforcesStatus,
             GFG_Status: row.geeksforgeeksStatus,
             Leetcode_Status: row.leetcodeStatus,
@@ -104,28 +104,65 @@ const Leaderboard: React.FC = () => {
   const onExportClick = useCallback(async () => {
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet('Leaderboard');
-
+  
     // Define column headers
     worksheet.columns = [
-      { header: 'Rank', key: 'Rank', width: 10 },
-      { header: 'Handle', key: 'Handle', width: 30 },
-      { header: 'Codeforces Handle', key: 'Codeforces_Handle', width: 20 },
-      { header: 'Codeforces Rating', key: 'Codeforces_Rating', width: 20 },
-      { header: 'GFG Handle', key: 'GFG_Handle', width: 20 },
-      { header: 'GFG Contest Score', key: 'GFG_Contest_Score', width: 20 },
-      { header: 'GFG Practice Score', key: 'GFG_Practice_Score', width: 20 },
-      { header: 'Leetcode Handle', key: 'Leetcode_Handle', width: 20 },
-      { header: 'Leetcode Rating', key: 'Leetcode_Rating', width: 20 },
-      { header: 'Codechef Handle', key: 'Codechef_Handle', width: 20 },
-      { header: 'Codechef Rating', key: 'Codechef_Rating', width: 20 },
-      { header: 'HackerRank Handle', key: 'HackerRank_Handle', width: 20 },
-      { header: 'HackerRank Practice Score', key: 'HackerRank_Practice_Score', width: 20 },
-      { header: 'Percentile', key: 'Percentile', width: 20 },
+      { header: 'Rank', key: 'Rank' },
+      { header: 'Handle', key: 'Handle' },
+      { header: 'Codeforces Handle', key: 'Codeforces_Handle' },
+      { header: 'Codeforces Rating', key: 'Codeforces_Rating' },
+      { header: 'GFG Handle', key: 'GFG_Handle' },
+      { header: 'GFG Contest Score', key: 'GFG_Contest_Score' },
+      { header: 'GFG Practice Score', key: 'GFG_Practice_Score' },
+      { header: 'Leetcode Handle', key: 'Leetcode_Handle' },
+      { header: 'Leetcode Rating', key: 'Leetcode_Rating' },
+      { header: 'Codechef Handle', key: 'Codechef_Handle' },
+      { header: 'Codechef Rating', key: 'Codechef_Rating' },
+      { header: 'HackerRank Handle', key: 'HackerRank_Handle' },
+      { header: 'HackerRank Practice Score', key: 'HackerRank_Practice_Score' },
+      { header: 'Percentile', key: 'Percentile' },
     ];
-
-    // Add rows
+  
+    // Add rows with conditional coloring
     rowData.forEach(data => {
-      worksheet.addRow(data);
+      const row = worksheet.addRow(data);
+  
+      // Apply red fill for cells based on status
+      const columnsToColor = [
+        'Codeforces_Handle',
+        'Codeforces_Rating',
+        'GFG_Handle',
+        'GFG_Contest_Score',
+        'GFG_Practice_Score',
+        'Leetcode_Handle',
+        'Leetcode_Rating',
+        'Codechef_Handle',
+        'Codechef_Rating',
+        'HackerRank_Handle',
+        'HackerRank_Practice_Score'
+      ];
+  
+      columnsToColor.forEach(column => {
+        const statusKey = `${column.split('_')[0]}_Status` as keyof RowData;
+        if (data[statusKey] !== undefined && !data[statusKey]) {
+          const cellIndex = worksheet.getColumn(column).number; // Get column index
+          row.getCell(cellIndex).fill = {
+            type: 'pattern',
+            pattern: 'darkHorizontal',
+            fgColor: { argb: 'FFC08080' }, // Light red fill
+          };
+        }
+      });
+    });
+
+    // Header style
+    worksheet.getRow(1).font = { bold: true };
+
+    // Auto resize columns
+    worksheet.columns.forEach(column => {
+      if (column.header) {
+        column.width = column.header.length * 1.2;
+      }
     });
 
     // Save the Excel file
@@ -137,7 +174,7 @@ const Leaderboard: React.FC = () => {
     a.download = 'LeaderboardExport.xlsx';
     a.click();
     URL.revokeObjectURL(url);
-  }, [rowData]);
+  }, [rowData]);  
 
   return (
     <div className="w-full h-full bg-black text-white font-sans antialiased mt-8 md:mb-0 mb-16">
