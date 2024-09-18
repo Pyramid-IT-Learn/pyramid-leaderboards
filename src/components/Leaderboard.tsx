@@ -171,7 +171,8 @@ const Leaderboard: React.FC = () => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'LeaderboardExport.xlsx';
+    // Download with the file name being the collection name
+    a.download = `${collection}.xlsx`;
     a.click();
     URL.revokeObjectURL(url);
   }, [rowData]);  
