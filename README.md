@@ -1,11 +1,10 @@
 # Pyramid Ranker
 
-<div style="display: flex; align-items: center; justify-content: center;">
+<div align="center">
   <img src="src/logo.svg" width="50" style="margin-right: 10px;" />
-  <span style="text-align: center; font-size: 2rem;">Pyramid Ranker</span>
+  <p style="font-size: 4rem; font-weight: bold;">Pyramid Ranker</p>
 </div>
 
-<br>
 Welcome to **Pyramid Ranker**! 🎉 This web application helps users manage and view leaderboards for various coding competitions and academic assessments. Built with a focus on performance and user experience, Pyramid Ranker allows you to easily select your college and batch, view rankings, and export leaderboard data for further analysis. 📊✨
 
 ## Features
@@ -13,7 +12,6 @@ Welcome to **Pyramid Ranker**! 🎉 This web application helps users manage and 
 - **Dynamic Leaderboards**: Fetch and display leaderboards based on selected colleges and batches. 🏆
 - **Data Export**: Export leaderboard data to Excel for offline analysis. 📥
 - **Responsive Design**: User-friendly interface that works seamlessly on both desktop and mobile devices. 📱💻
-- **Custom Dropdowns**: Intuitive dropdowns for selecting databases and collections. 📋
 
 ## Technologies Used
 
