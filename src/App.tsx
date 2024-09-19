@@ -15,14 +15,33 @@ const App: React.FC = () => {
         </div>
         <div className="relative z-10">
           <Header />
-          <main className="pt-20 pb-8 px-4 sm:px-6 lg:px-8">
-            <div className="container mx-auto max-w-4xl bg-dark-900 bg-opacity-80 rounded-lg shadow-lg backdrop-filter backdrop-blur-lg">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/leaderboard/:database/:collection" element={<Leaderboard />} />
-                <Route path="/leaderboard" element={<Leaderboard />} />
-              </Routes>
-            </div>
+          <main className="flex items-center justify-center min-h-screen pt-20 pb-8 px-4 sm:px-6 lg:px-8">
+            <Routes>
+              <Route 
+                path="/" 
+                element={
+                  <div className="container mx-auto max-w-4xl bg-dark-900 bg-opacity-80 rounded-lg shadow-lg backdrop-filter backdrop-blur-lg">
+                    <Home />
+                  </div>
+                } 
+              />
+              <Route 
+                path="/leaderboard/:database/:collection" 
+                element={
+                  <div className="container mx-auto max-w-6xl bg-dark-900 bg-opacity-80 rounded-lg shadow-lg backdrop-filter backdrop-blur-lg">
+                    <Leaderboard />
+                  </div>
+                } 
+              />
+              <Route 
+                path="/leaderboard" 
+                element={
+                  <div className="container mx-auto max-w-6xl bg-dark-900 bg-opacity-80 rounded-lg shadow-lg backdrop-filter backdrop-blur-lg">
+                    <Leaderboard />
+                  </div>
+                } 
+              />
+            </Routes>
           </main>
         </div>
       </div>

@@ -178,42 +178,40 @@ const Leaderboard: React.FC = () => {
   }, [rowData]);  
 
   return (
-    <div className="w-full h-full bg-black text-white font-sans antialiased mt-8 md:mb-0 mb-16">
-      <div className="container mx-auto p-4 bg-opacity-10 bg-white backdrop-filter backdrop-blur-lg rounded-lg shadow-lg">
-        <div id="lastUpdated" className="text-center mb-4">
-          <h2 className="text-lg font-semibold mb-2">
-            Last Updated: <span className="text-blue-400">{lastUpdated ? new Date(lastUpdated).toLocaleString() : 'N/A'}</span>
-          </h2>
-        </div>
-        {database && collection ? (
-          <>
-            <div className="ag-theme-alpine-dark w-full h-[calc(100vh)] shadow-lg shadow-primary-950">
-              <AgGridReact
-                rowData={rowData}
-                columnDefs={columnDefs}
-                pagination={true}
-                paginationPageSize={10}
-              />
-            </div>
-            <div className="text-center mt-4">
-              <button
-                onClick={onExportClick}
-                className="bg-primary-600 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded shadow-lg shadow-primary-800 hover:shadow-primary-900 transition-colors duration-300"
-              >
-                Export to Excel
-              </button>
-            </div>
-          </>
-        ) : (
-          <div className="flex flex-col items-center justify-center min-h-screen">
-            <p className="text-3xl font-bold text-gray-600 text-center">
-              Please select a college and batch to view and manage leaderboards. 📊
-            </p>
+    <div className="container mx-auto p-4 bg-opacity-10 bg-grey backdrop-filter backdrop-blur-lg rounded-lg shadow-lg">
+      <div id="lastUpdated" className="text-center mb-4">
+        <h2 className="text-lg font-semibold mb-2">
+          Last Updated: <span className="text-blue-400">{lastUpdated ? new Date(lastUpdated).toLocaleString() : 'N/A'}</span>
+        </h2>
+      </div>
+      {database && collection ? (
+        <>
+          <div className="ag-theme-alpine-dark w-full h-[calc(100vh-200px)] md:h-[calc(100vh-150px)] shadow-lg shadow-primary-950">
+            <AgGridReact
+              rowData={rowData}
+              columnDefs={columnDefs}
+              pagination={true}
+              paginationPageSize={10}
+            />
           </div>
-        )}
-        <div className="text-center mt-4">
-          <h1 className="text-lg font-semibold">App By: <a href="https://www.instagram.com/gabyah92" className="text-primary-400 hover:underline">gabyah92</a> & <a href="https://github.com/dog-broad" className="text-primary-400 hover:underline">Rushyendra</a></h1>
+          <div className="text-center mt-4">
+            <button
+              onClick={onExportClick}
+              className="bg-primary-600 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded shadow-lg shadow-primary-800 hover:shadow-primary-900 transition-colors duration-300"
+            >
+              Export to Excel
+            </button>
+          </div>
+        </>
+      ) : (
+        <div className="flex flex-col items-center justify-center min-h-screen">
+          <p className="text-3xl font-bold text-gray-600 text-center">
+            Please select a college and batch to view and manage leaderboards. 📊
+          </p>
         </div>
+      )}
+      <div className="text-center mt-4">
+        <h1 className="text-lg font-semibold">App By: <a href="https://www.instagram.com/gabyah92" className="text-primary-400 hover:underline">gabyah92</a> & <a href="https://github.com/dog-broad" className="text-primary-400 hover:underline">Rushyendra</a></h1>
       </div>
     </div>
   );
