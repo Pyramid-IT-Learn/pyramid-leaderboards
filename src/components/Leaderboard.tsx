@@ -175,7 +175,7 @@ const Leaderboard: React.FC = () => {
     a.download = `${collection}.xlsx`;
     a.click();
     URL.revokeObjectURL(url);
-  }, [rowData]);  
+  }, [rowData, collection]);  
 
   return (
     <div className="container mx-auto p-4 bg-opacity-10 bg-grey backdrop-filter backdrop-blur-lg rounded-lg shadow-lg">
