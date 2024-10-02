@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../logo.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,6 +20,9 @@ const Header: React.FC = () => {
         <nav className="hidden sm:flex items-center space-x-6">
           <Link to="/" className="text-dark-50 hover:text-primary-400 transition-colors duration-300">Home</Link>
           <Link to="/leaderboard" className="text-dark-50 hover:text-primary-400 transition-colors duration-300">Leaderboard</Link>
+          <a href="https://github.com/Pyramid-IT-Learn/pyramid-leaderboards" target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faGithub} size="2x" className="mr-4 text-dark-50 hover:text-primary-400 transition-colors duration-300" />
+          </a>
         </nav>
         <button
           className="sm:hidden text-dark-50 hover:text-primary-400 transition-colors duration-300"
@@ -32,6 +37,9 @@ const Header: React.FC = () => {
         <nav className="sm:hidden mt-4 flex flex-col space-y-2">
           <Link to="/" className="font-semibold text-dark-100 hover:text-primary-400 transition-colors duration-300 px-4 py-2">Home</Link>
           <Link to="/leaderboard" className="font-semibold text-dark-100 hover:text-primary-400 transition-colors duration-300 px-4 py-2">Leaderboard</Link>
+          <a href="https://github.com/Pyramid-IT-Learn/pyramid-leaderboards" target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faGithub} size="2x" className="mr-4 text-dark-50 hover:text-primary-400 transition-colors duration-300" />
+          </a>
         </nav>
       )}
     </header>

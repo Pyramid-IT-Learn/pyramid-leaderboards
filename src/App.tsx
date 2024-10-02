@@ -4,6 +4,7 @@ import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Leaderboard from './components/Leaderboard';
 import Home from './components/Home';
+import Footer from './components/Footer';
 
 const App: React.FC = () => {
   return (
@@ -43,6 +44,7 @@ const App: React.FC = () => {
               />
             </Routes>
           </main>
+          <Footer />
         </div>
       </div>
     </Router>

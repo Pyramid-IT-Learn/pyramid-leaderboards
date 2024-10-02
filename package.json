@@ -4,6 +4,8 @@
   "private": true,
   "homepage": "https://dog-broad.github.io/pyramid-leaderboards",
   "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@types/react": "^18.3.7",
