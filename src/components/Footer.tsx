@@ -7,33 +7,24 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-dark-900 text-dark-200 p-4 mt-8">
       <div className="container mx-auto text-center">
-        <p className="mb-2">GNU GENERAL PUBLIC LICENSE</p>
-        <p className="mb-2">Version 3, 29 June 2007</p>
-        <div className="flex justify-center mt-4">
+        <p className="mt-2">
+          ⭐ If you enjoy our work, please consider giving us a star on{' '}
           <a
-            href="https://github.com/Pyramid-IT-Learn/Pyramid-Performance-Tracker"
+            href="https://github.com/Pyramid-IT-Learn/pyramid-leaderboards"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-primary-400 hover:underline flex items-center mx-2"
+            className="text-primary-600"
           >
-            <FontAwesomeIcon icon={faGithub} className="mr-2" />
-            Scraper Source Code
-          </a>
-          <span className="mx-2">|</span>
-          <a
-            href="https://github.com/Pyramid-IT-Learn/pyramid-leaderboards-backend"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary-400 hover:underline flex items-center mx-2"
-          >
-            <FontAwesomeIcon icon={faGithub} className="mr-2" />
-            Backend Source Code
-          </a>
-        </div>
-        <p className="mt-4">Contributions are appreciated!</p>
+            GitHub
+            <FontAwesomeIcon icon={faGithub} size="lg" className="text-primary-600 ml-1" />
+          </a>{' '}!
+        </p>
+        <p>✨ Contributions are always welcome! Let's build something great together! 🚀</p>
       </div>
     </footer>
   );
 };
 
 export default Footer;
+
+
