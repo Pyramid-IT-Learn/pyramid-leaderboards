@@ -5,6 +5,11 @@
   <p style="font-size: 4rem; font-weight: bold;">Pyramid Ranker</p>
 </div>
 
+# 🛠️ Project Repositories
+
+- **Scraper:** [Pyramid Performance Tracker](https://github.com/Pyramid-IT-Learn/Pyramid-Performance-Tracker)
+- **Backend:** [Pyramid Leaderboards Backend](https://github.com/Pyramid-IT-Learn/pyramid-leaderboards-backend)
+
 Welcome to **Pyramid Ranker**! 🎉 This web application helps users manage and view leaderboards for various coding competitions and academic assessments. Built with a focus on performance and user experience, Pyramid Ranker allows you to easily select your college and batch, view rankings, and export leaderboard data for further analysis. 📊✨
 
 ## Features
