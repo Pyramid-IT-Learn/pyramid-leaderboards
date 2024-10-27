@@ -13,6 +13,13 @@ body {
   color: #F2F2F2;
 }
 
+div.ag-root .ag-cell-focus {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
